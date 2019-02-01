@@ -1,10 +1,10 @@
-var createError = require('http-errors');
-var express = require('express');
-var cookieParser = require('cookie-parser');
+import createError from 'http-errors';
+import express from 'express';
+import cookieParser from 'cookie-parser';
 
-var usersRouter = require('./routes/users');
+import usersRouter from './routes/users';
 
-var app = express();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -13,12 +13,10 @@ app.use(cookieParser());
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+app.use((req, res, next) => next(createError(404)));
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err: any, req: any, res: any, next: any) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -28,4 +26,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
