@@ -1,4 +1,3 @@
-import createError from 'http-errors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
@@ -10,20 +9,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/consumption', usersRouter);
-
-// catch 404 and forward to error handler
-app.use((req, res, next) => next(createError(404)));
+app.use('/consumption', consumptionRouter);
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  //res.locals.error = req.app.get('env') === 'development' ? err : {};
+  console.log(err)
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  return res.status(err.status || 500).send(err.details);
 });
 
 export default app;
+
