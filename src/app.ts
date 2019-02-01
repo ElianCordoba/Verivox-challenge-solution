@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
-import usersRouter from './routes/users';
+import consumptionRouter from './routes/consumption';
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/users', usersRouter);
+app.use('/consumption', usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => next(createError(404)));
