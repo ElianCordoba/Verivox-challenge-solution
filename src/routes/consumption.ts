@@ -1,9 +1,9 @@
-import express from 'express';
-import { celebrate, Joi, errors } from 'celebrate';
+import express, { Request, Response, NextFunction } from 'express';
+import { celebrate, Joi } from 'celebrate';
 import ProductRepository from '../repositories/product';
 const router = express.Router();
 
-// In a real project I'll use some DI or IOC library in order for the project to scale properly
+// In a real project I'll use some DI or IOC library as this pattern does not scale well
 const products = new ProductRepository().getAll();
 
 router.get(
@@ -15,8 +15,8 @@ router.get(
         .required()
     }
   }),
-  (req, res, next) => {
-    const consumption = req.query.yearlyConsumption;
+  (req: Request, res: Response) => {
+    const consumption: number = req.query.yearlyConsumption;
     const result = products
       .map(product => ({
         name: product.name,
