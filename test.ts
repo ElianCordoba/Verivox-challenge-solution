@@ -41,7 +41,6 @@ describe('Enpoint tests', () => {
 
   test('It should get the truth', async () => {
     const response = await request(application).get('/');
-    expect(response.status).toBe(418);
     expect(JSON.parse(response.text)).toEqual('Elian === Cool dev');
   });
 });
