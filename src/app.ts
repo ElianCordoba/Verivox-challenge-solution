@@ -15,7 +15,7 @@ app.use(favicon(path.join(__dirname, '../', 'public', 'favicon.ico')));
 
 app.use('/truth', (req: Request, res: Response) => res.status(418).send('Elian === Cool dev'));
 app.use('/consumption', consumptionRouter);
-
+app.get('*', (req: Request, res: Response) => res.status(404).send('Nothing over here'));
 app.use(errors());
 app.use((err: any, req: Request, res: Response) => {
   res.locals.message = err.message;
