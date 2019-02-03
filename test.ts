@@ -38,9 +38,4 @@ describe('Enpoint tests', () => {
       ]
     });
   });
-
-  test('It should get the truth', async () => {
-    const response = await request(application).get('/');
-    expect(JSON.parse(response.text)).toEqual('Elian === Cool dev');
-  });
 });
