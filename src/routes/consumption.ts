@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import { celebrate, Joi } from 'celebrate';
 import ProductRepository from '../repositories/product';
 const router = express.Router();

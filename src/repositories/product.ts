@@ -22,7 +22,6 @@ class ProductB implements Product {
   costPerKWh = 0.3;
 
   calculateCost(kWhConsumptionYearly: number) {
-    console.log(this.baseCost, this.costPerKWh, kWhConsumptionYearly);
     if (kWhConsumptionYearly <= 4000) {
       return this.baseCost;
     } else {
@@ -32,8 +31,8 @@ class ProductB implements Product {
 }
 
 /* 
-  I putted the logic here so it stays encapsulated and, in hypothetical future in witch you want
-  to change the source of the products you only do it here, as long as you follow the implementation.
+  I put the logic here so it stays encapsulated and, in hypothetical future in which you want to
+  change the source of the products you only do it here, as long as you follow the implementation.
 */
 export default class ProductRepository {
   private products: Array<Product> = [];

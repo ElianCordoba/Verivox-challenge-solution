@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 
 import consumptionRouter from './routes/consumption';
@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 app.use('/consumption', consumptionRouter);
 
-app.use((err: any, req: any, res: any, next: any) => {
+app.use((err: any, req: Request, res: Response) => {
   res.locals.message = err.message;
   return res.status(err.status || 500).send(err.details);
 });
